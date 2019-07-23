@@ -1,0 +1,16 @@
+<h2>Latests Posts</h2>
+<br />
+
+<% @results.each do |post| %>
+	<p>
+		Name: <%= post.name %>
+		<br />
+		Post: <%= post.content %>
+		<br />
+		Added at <%= post.created_at %>
+		<br />
+		<a href="/detales/<%= post['id'] %>">comments</a>
+	</p>
+
+	<hr />
+<% end %>
