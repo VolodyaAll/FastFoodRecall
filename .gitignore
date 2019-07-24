@@ -2,3 +2,5 @@
 Leprozorium.db
 leprozoriumhq.db
 .gitignore
+fastfoodrecall.db
+.sqliterc

@@ -4,17 +4,22 @@ require 'sinatra'
 require 'sinatra/reloader'
 require 'sinatra/activerecord'
 
-set :database, "sqlite3:leprozoriumhq.db"
+set :database, "sqlite3:fastfoodrecall.db"
 
-class Post < ActiveRecord::Base
-	has_many :comments, dependent: :destroy
-	validates :name, presence: true
-	validates :content, presence: true
+class Shop < ActiveRecord::Base
+  has_many :recalls, dependent: :destroy
 end
 
-class Comment < ActiveRecord::Base
-	belongs_to :post
-	validates :content, presence: true
+class Recall < ActiveRecord::Base
+  belongs_to :shop
+  validates :comment, presence: true
+  validates :rating, presence: true
+end
+
+class User < ActiveRecord::Base
+  validates :name, presence: true
+  validates :email, presence: true
+  validates :password, presence: true
 end
 
 get '/' do
