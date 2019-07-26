@@ -1,30 +1,53 @@
-<h3>Post detales</h3>
+<h3>Описание забегаловки</h3>
 <br />
-<p>
-	<%= @post.content %>
-	<br />
-	Added at <%= @post.created_at %>	
-</p>
+Название: <%= @shop.name %>
+<div contenteditable="true">Описание: <%= @shop.description %></div>
+Адрес: <%= @shop.adress %>
 <br />
-<h4>Comments</h4>
-<br />
+<h4>Рейтинг: <%= @shop.rating %><h4>
 <hr />
 
-	<% @comments.each do |comment| %>
-		<p>
-			<%= comment.content %>
-			<br />
-			<span style="font-size: 75%; color: #999">Added at <%= comment.created_at %></span>
-			<br />		
-		</p>
+<form action="/detales/<%= @shop.id %>" method="POST" role="form">
+  <div class="form-group">
+    <span style="font-size: 110%">Оцените заведение:</span>
+    <div class="form-check">
+    <input class="form-check-input" type="radio" name="recall[rating]" id="inlineRadio1" value="1">
+    <label class="form-check-label" for="inlineRadio1">1 (Ужасно)</label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="recall[rating]" id="inlineRadio2" value="2">
+    <label class="form-check-label" for="inlineRadio2">2 (Плохо)</label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="recall[rating]" id="inlineRadio3" value="3">
+    <label class="form-check-label" for="inlineRadio3">3 (Сойдёт)</label>
+  </div>
+      <div class="form-check">
+    <input class="form-check-input" type="radio" name="recall[rating]" id="inlineRadio4" value="4">
+    <label class="form-check-label" for="inlineRadio3">4 (Хорошо)</label>
+  </div>
+      <div class="form-check">
+    <input class="form-check-input" type="radio" name="recall[rating]" id="inlineRadio5" value="5">
+    <label class="form-check-label" for="inlineRadio3">5 (Прекрасно)</label>
+  </div>
+    <span style="font-size: 105%">Комментарий:</span>
+    <textarea name="recall[comment]" class="form-control" rows="6" placeholder="Напиши здесь свой комментарий"></textarea>
+  </div>
+  </br>
+  <button type="submit" class="btn btn-primary">Добавить отзыв</button>
+</form>
 
-		<hr />
-	<% end %>
+<hr />
+<h4>Отзывы</h4>
+<hr />
 
-<form action="/detales/<%= @post.id %>" method="POST" role="form">	 
-		<div class="form-group">
-		    <textarea name="comment[content]" class="form-control" rows="6" placeholder="Enter your comment here"></textarea>
-	  	</div> 
-	  	</br>
-	  	<button type="submit" class="btn btn-primary">Add comment</button>
-	</form>
+<% @recalls.each do |recall| %>
+    <span style="font-size: 150%; color: #555">Оценка заведения: <%= recall.rating %></span>
+    <br />
+    Комментарий:
+    <div contenteditable="true"><%= recall.comment %></div>
+    <br />
+    <span style="font-size: 75%; color: #999">Отзыв оставлен: <%= recall.created_at %></span>
+    <br />
+  <hr />
+<% end %>

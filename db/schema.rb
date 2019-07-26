@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2019_07_24_141750) do
     t.integer "shop_id"
     t.text "author"
     t.text "comment"
-    t.float "rating"
+    t.integer "rating"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["shop_id"], name: "index_recalls_on_shop_id"
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2019_07_24_141750) do
   create_table "users", force: :cascade do |t|
     t.text "name"
     t.text "email"
-    t.text "password"
+    t.text "password_hash"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -1,16 +1,15 @@
-<h2>Latests Posts</h2>
+<h2>Список заведений</h2>
 <br />
 
-<% @results.each do |post| %>
-	<p>
-		Name: <%= post.name %>
-		<br />
-		Post: <%= post.content %>
-		<br />
-		Added at <%= post.created_at %>
-		<br />
-		<a href="/detales/<%= post['id'] %>">comments</a>
-	</p>
-
-	<hr />
+<% @shops.each do |shop| %>
+  <p>
+    <a href="/detales/<%= shop['id'] %>">Название: <%= shop.name %></a>
+    <br />
+    <span class="d-inline-block text-truncate" style="max-width: 300px;">
+      Описание: <%= shop.description %>
+    </span>
+    <br />
+    Адрес: <%= shop.adress %>
+  </p>
+  <hr />
 <% end %>
